@@ -1,26 +1,14 @@
-/*let n1 = 10;
-let n2 = '10';
+showPrimes(10);
 
-if (n1 > n2) {
-    return console.log('O numero maior é n1')
-} else if (n1 < n2) {
-    return console.log('O numero maior é n2')
-} else if (n1 === n2) {
-    return console.log('Os numeros sao iguais')
-} else {
-    return console.log('Numero invalido')
-}
-*/
-function max(n1, n2) {
-    if (n1 > n2) {
-        return console.log('O numero maior é n1')
-    } else if (n1 < n2) {
-        return console.log('O numero maior é n2')
-    } else if (n1 === n2) {
-        return console.log('Os numeros sao iguais')
-    } else {
-        return console.log('Numero invalido')
-    }
+function showPrimes(limit) {
+    for (let number =2; number <= limit; number++)
+     if (isPrime(number)) console.log(number);
 }
 
-max(10, 2);
+function isPrime(number) {
+    for (let factor = 2; factor < number; factor++) 
+        if (number % factor === 0) 
+            return false;
+        
+    return true;
+}
