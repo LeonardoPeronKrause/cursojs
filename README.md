@@ -207,7 +207,7 @@ const circle = {
     }
 };
 
-// FACTORY FUNCTION
+**FACTORY FUNCTION**
 
 function createCircle(radius) {
     return {
@@ -224,3 +224,24 @@ console.log(circle1);
 const circle2 = createCircle(2);
 console.log(circle2);
 
+**CONSTRUCTOR FUNCTION -> PASCAL NOTATION EscrevaAssimAsFunçoes**
+
+function Circle(radius) {
+    this.raius = radius;
+    this.draw = function() {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(1);
+
+**Adicionando atributos ao objeto**
+
+const circle = {
+    radius: 1
+};
+
+circle.color = 'blue';
+circle.draw = function() {}
+
+console.log(circle)
