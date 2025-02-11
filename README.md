@@ -245,3 +245,60 @@ circle.color = 'blue';
 circle.draw = function() {}
 
 console.log(circle)
+
+**ENUMERATING PROPERTIES OF AN OBJECT**
+
+const circle = {
+    radius: 1,
+    draw() {
+        console.log('draw');
+    }
+};
+
+for (let key in circle)
+    console.log(key, circle[key])
+
+for (let key of Object.keys(circle)) 
+    console.log(key)
+
+**EXERCISE 1 - ADDRESS OBJECT**
+
+let address = {
+    street: 'Capitão Romualdo de Barros',
+    city: 'Fpolis',
+    zipCode: 88040600
+}
+
+function showAddress(address) {
+    for (let key in address) {
+        console.log(key, address[key])
+    }
+}
+
+showAddress(address)
+
+**EXERCISE - FACTORY AND CONSTRUCTOR FUNCTIONS**
+
+// Factory Function
+let address = createAddress('Capitão Romualdo de Barros', 'Florianópolis', 88040600);
+
+console.log(address);
+
+function createAddress(street, city, zipCode) {
+    return {
+        street,
+        city,
+        zipCode
+    };
+
+
+// Constructor Function
+let address = new Address('Capitão Romualdo de Barros', 'Florianópolis', 88040600);
+
+console.log(address);
+
+function Address(street, city, zipCode) {
+    this.street = street;
+    this.city = city;
+    this.zipCode = zipCode;
+}
