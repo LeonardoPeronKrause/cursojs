@@ -302,3 +302,159 @@ function Address(street, city, zipCode) {
     this.city = city;
     this.zipCode = zipCode;
 }
+
+**EXERCISE 3 - OBJECT EQUALITY**
+
+let address1 = new Address('a', 'b', 'c');
+let address2 = new Address('a', 'b', 'c');
+let address3 = address1;
+
+console.log(areEqueal(address1, address2))
+console.log(areSame(address1, address2))
+console.log(areSame(address1, address3))
+
+function Address(street, city, zipCode) {
+    this.street = street;
+    this.city = city;
+    this.zipCode = zipCode;
+}
+
+function areEqueal(address1, address2) {
+    return address1.street === address2.street &&
+    address1.city === address2.city &&
+    address1.zipCode === address2.zipCode;
+}
+
+function areSame(address1, address2) {
+    return address1 === address2;
+}
+
+**EXERCISE 4 - BLOG POST OBJECT**
+
+let post = {
+    title: 'a',
+    body: 'b',
+    author: 'c', 
+    views: 10,
+    comments: [
+        { author: 'a', body: 'b'},
+        { author: 'c', body: 'd'},
+    ],
+    isLive: true
+}
+
+console.log(post)
+
+**EXERCISE 5 - CONSTRUCTOR FUNCTIONS**
+
+let post = new Post('a', 'b', 'c');
+
+console.log(post);
+
+function Post(title, body, author) {
+    this.title = title;
+    this.body = body;
+    this.author = author;
+    this.views = 0;
+    this.comments = [];
+    this.isLive = false;
+}
+
+**EXERCISE 6 - PRICE RANGE OBJECTS**
+
+let priceRanges = [
+    { label: '$', tooltip: 'Inexpensive', minPerPerson: 0, maxPerPerson: 10 },
+    { label: '$$', tooltip: 'Moderate', minPerPerson: 11, maxPerPerson: 20 },
+    { label: '$$$', tooltip: 'Expensive', minPerPerson: 21, maxPerPerson: 50 },
+];
+
+let restaurants = [
+    { averagePerPerson: 5 }
+]
+
+**ARRAY**
+
+const numbers = [3, 4];
+
+// Add no final
+numbers.push(5, 6);
+
+// Add no início
+numbers.unshift(1, 2)
+
+// Add no medio, porem eu tenho que falar qual o lugar do indice ele vai adicionar e qual elemento excluir porem no caso nao exlui nenhum e apos eu boto oq eu quero add no array
+numbers.splice(2, 0, 'a', 'b');
+
+console.log(numbers);
+
+**FINDING ELEMENTS (PRIMITIVES)**
+
+const numbers = [1, 2, 3, 1, 4];
+
+// A função indexOf verifica se o valor que eu passar dentro do '()' está no array ou não, se não estiver ele retorna -1, se estiver ele retorna o indice que se encontra esse valor dentro do array
+console.log(numbers.indexOf(1))
+
+// Se tiver dois elementos com o mesmo valor ele sempre vai mostrar o ultimo
+console.log(numbers.lastIndexOf(1))
+
+// Procura se existe o indice que eu passar dentro do parenteses, se nao tiver retorna false, se não tiver retorna true, AMBOS OS CODIGOS FAZEM A MESMA COISA POREM O SEGUNDO É MAIS USADO POIS É MAIS SIMPLES!
+console.log(numbers.indexOf(1) !== -1)
+console.log(numbers.includes(1))
+
+**FINDING ELEMENTS (REFERENCES TYPES)**
+
+const courses = [
+    {id: 1, name: 'a'},
+    {id:2, name: 'b'},
+];
+
+// O método .find() percorre o array e retorna o primeiro elemento que satisfaz a condição dentro da função de callback. No caso, estamos verificando se course.name é igual a 'a'; 
+const course = courses.find(function(course) {
+    return course.name === 'a';
+})
+
+// Se dermos um console.log ele retorna o indice que se encontra esse valor porem se não tiver ele retorna -1
+console.log(course);
+ 
+// Se tivermos esse mesmo codigo
+const courses = [
+    {id: 1, name: 'a'},
+    {id:2, name: 'b'},
+];
+
+// Com o findIndex, se tiver ele retorna o numero do indice que se encontra, caso contrario retorna -1
+const course = courses.findIndex(function(course) {
+    return course.name === 'a';
+})
+
+console.log(course);
+ 
+
+**ARROW FUNCTIONS**
+
+const courses = [
+    {id: 1, name: 'a'},
+    {id:2, name: 'b'},
+];
+
+const course = courses.find(() => course.name === 'a');
+
+console.log(course)
+
+**REMOVING ELEMENTS**
+
+const numbers = [1, 2, 3, 4];
+
+// Remove do Final
+const last = numbers.pop()
+console.log(numbers);
+console.log(last);
+
+// Remove do Começo
+const first = numbers.shift()
+console.log(numbers)
+console.log(first)
+
+// Remove do Meio
+numbers.splice(2, 2)
+console.log(numbers)
