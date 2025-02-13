@@ -458,3 +458,167 @@ console.log(first)
 // Remove do Meio
 numbers.splice(2, 2)
 console.log(numbers)
+
+**EMPTYING AN ARRAY**
+
+let numbers = [1, 2, 3, 4];
+let another = numbers;
+
+// Soluction 1
+numbers = [];
+
+// Soluction 2
+numbers.length = 0;
+
+// Soluction 3
+numbers.splice(0,numbers.length);
+
+
+// Soluction 4
+while (numbers.length > 0) {
+    numbers.pop();
+}
+
+console.log(numbers);
+console.log(another);
+
+**COMBINING AND SLICING ARRAYS**
+
+const first = [{ id: 1}];
+const second = [4, 5, 6];
+
+const combined = first.concat(second);
+first[0].id = 10;
+
+const slice = combined.slice()
+
+console.log(combined)
+console.log(slice)
+
+**The Spread Operator**
+
+const first = [1, 2, 3];
+const second = [4, 5, 6];
+
+//const combined = first.concat(second);
+const combined = [...first, 'a', ...second, 'b'];
+
+//const copy = combined.slice();
+const copy = [...combined];
+
+console.log(copy)
+
+**ITERATING AN ARRAY**
+
+const numbers = [1, 2, 3]
+
+for (let number of numbers) {
+    console.log(number);
+}
+
+numbers.forEach((number, index) => console.log(index, number));
+
+**JOINING ARRAYS**
+
+const numbers = [1, 2, 3];
+
+const joined = numbers.join(', ')
+console.log(joined);
+
+const message = 'This is my first message';
+
+const parts = message.split(' ')
+console.log(parts)
+
+const combined = parts.join('-');
+console.log(combined)
+
+**SORTING ARRAYS**
+
+const courses = [
+    { id: 1, name: 'Node.js'},
+    { id: 2, name: 'javaScript' },
+];
+
+courses.sort(function(a, b) {
+    //a < b => -1
+    //a < b = 1
+    //a === b = 0
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+});
+
+console.log(courses);
+
+**TESTING THE ELEMENTS OF AN ARRAY**
+
+const numbers = [1, 2, 3];
+
+const allPositive = numbers.some(function(value) {
+    return value >= 0;
+});
+
+console.log(allPositive);
+
+**FILTERING AN ARRAY**
+
+const numbers = [1, -1, 2, 3, 0];
+                        
+// (n => n >= 0), lê-se -> n(number) =>(where) n(number) >= 0
+const filtered = numbers.filter(n => n >= 0);
+
+console.log(filtered);
+
+**MAPPING AN ARRAY**
+
+
+EXEMPLO 1 = MAPEANDO NÚMEROS PARA STRINGS
+const numbers = [1, -1, 2, 3, 0];
+
+const filtered = numbers.filter(n => n >= 0);
+
+const items = filtered.map(n => '<li>' + n + '</li>')
+
+const html = '<ul>' + items.join('') + '</ul>';
+
+console.log(html);
+
+EXEMPLO 2
+const numbers = [1, -1, 2, 3];
+
+const items = numbers
+    .filter(n => n >= 0)
+    .map(n => ({value: n}))
+    .filter(obj => obj.value > 1)
+    .map(obj => obj.value);
+
+console.log(items);
+
+**REDUCING AN ARRAY**
+
+
+EXEMPLO 1 = MAPEANDO NÚMEROS PARA STRINGS
+const numbers = [1, -1, 2, 3, 0];
+
+const filtered = numbers.filter(n => n >= 0);
+
+const items = filtered.map(n => '<li>' + n + '</li>')
+
+const html = '<ul>' + items.join('') + '</ul>';
+
+console.log(html);
+
+EXEMPLO 2
+const numbers = [1, -1, 2, 3];
+
+const items = numbers
+    .filter(n => n >= 0)
+    .map(n => ({value: n}))
+    .filter(obj => obj.value > 1)
+    .map(obj => obj.value);
+
+console.log(items);
