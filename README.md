@@ -471,7 +471,7 @@ numbers = [];
 numbers.length = 0;
 
 // Soluction 3
-numbers.splice(0,numbers.length);
+numbers.splice(0, numbers.length);
 
 
 // Soluction 4
@@ -600,7 +600,6 @@ console.log(items);
 
 **REDUCING AN ARRAY**
 
-
 EXEMPLO 1 = MAPEANDO NÚMEROS PARA STRINGS
 const numbers = [1, -1, 2, 3, 0];
 
@@ -622,3 +621,126 @@ const items = numbers
     .map(obj => obj.value);
 
 console.log(items);
+
+**EXERCISE 1 - ARRAY FROM RANGE**
+
+const numbers = arrayFromRange(1, 4);
+
+console.log(numbers);
+
+function arrayFromRange(min, max) {
+    output = []; // Declarar um array vazio
+    for (let i = min; i <= max; i++) {
+        output.push(i); // Adicionar os números ao array
+    }
+    return output; // Retorna o array apos preencher todos os números
+}
+
+**EXERCISE 2 - INCLUDES**
+
+const numbers = [1, 2, 3, 4];
+
+console.log(numbers.includes(4));
+
+function includes(array, searchElements) {
+    array = numbers;
+    searchElements(numbers.indexOf(1) !== -1);
+} 
+
+// OU
+
+const numbers = [1, 2, 3, 4];
+
+console.log(includes(numbers, 1));
+
+function includes(array, searchElements) {
+    for (let element of array)
+        if (element === searchElements)
+            return true;
+        return false;
+}
+
+**EXERCISE 3 - EXCEPT**
+
+const numbers = [1, 2, 3, 4];
+
+const output = except(numbers, [1, 2]);
+
+console.log(output);
+
+function except(array, excluded) {
+    const output = [];
+    for ( let element of array)
+        if (!excluded.includes(element))
+            output.push(element);
+    return output;
+}
+
+**EXERCISE 4 - MOVING AN ELEMENT**
+
+const numbers = [1, 2, 3, 4];
+
+const output = move(numbers, 0, 0);
+
+console.log(output);  
+
+function move(array, index, offset) {
+    const position = index + offset;
+    if (position >= array.lenght || position < 0) {
+        console.error('Invalid offset.');
+        return;
+    }
+
+
+    const output = [...array];
+    const element = output.splice(index, 1)[0];
+    output.splice(index + offset, 0, element);
+    return output;
+}
+
+**EXERCISE 5 - COUNT OCCURRENCES**
+
+const numbers = [1, 2, 3, 4, 1];
+
+const count = countOccurrences(numbers, 1);
+
+console.log(count);
+
+function countOccurrences(array, searchElement) {
+    /*let count = 0;
+    for (let element of array)
+        if (element === searchElement)
+            count++;
+        return count;*/
+
+     return array.reduce((accumulator, current) => {
+        const occurrence = ( current === searchElement) ? 1 : 0;
+        console.log(accumulator, current, searchElement);
+        return accumulator + occurrence;
+    }, 0);
+}
+
+**EXERCISE 6 - GET MAX**
+
+const numbers = [1, 2, 3, 4];
+
+const max = getMax([1, 2, 2, 1, 3]);
+
+console.log(max);
+
+function getMax(array) {
+    if (array.length === 0) return undefined;
+
+    /*let max = array[0];
+
+    for (let i = 1; i < array.length; i++)
+        if (array[i] > max)
+            max = array[i]
+
+    return max;*/
+
+    return array.reduce((a, b) => (a > b) ? a : b);        
+}
+
+**EXERCISE 7 - MOVIES**
+
