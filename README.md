@@ -744,3 +744,216 @@ function getMax(array) {
 
 **EXERCISE 7 - MOVIES**
 
+const movies = [
+    { title: 'a', year: 2018, rating: 4.5 },
+    { title: 'b', year: 2018, rating: 4.7 },
+    { title: 'c', year: 2018, rating: 3 },
+    { title: 'd', year: 2017, rating: 4.5 }, 
+];
+
+// Allthe  movies in 2018 with rating > 4
+// Sort them by rating
+// Descending order
+// Pick their title
+
+const titles = movies
+    .filter(m => m.year === 2018 && m.rating >= 4)
+    .sort((a, b) => a.rating - b.rating)
+    .reverse()
+    .map(m => m.title)
+
+console.log(titles);
+
+**FUNCTION**
+
+**FUNCTION DECLARATIONS X FUNCTION EXPRESSIONS**
+
+
+// Function Declaration
+function walk() {
+    console.log('walk')
+}
+
+// Function Expression
+const run = function() {
+    console.log('run')
+};
+let move = run;
+run();
+move();
+
+**HOISTING**
+
+// Basicamente o JS bota as funcoes para cima automaticamente quando vai rodar algo, e isso é achado de 'hoisting', como no exemplo!
+
+function walk() {
+    console.log('walk')
+}
+
+// Function Declaration
+walk();
+
+// Function Expression
+run();
+
+const run = function() {
+    console.log('run')
+};
+
+**ARGUMENTS**
+
+function sum() {
+    let total = 0;
+    for (let value of arguments)
+        total += value;
+    return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5, 10));
+
+**THE REST OPERATOR**
+
+function sum(discount, ...prices) {
+    const total = prices.reduce((a, b) => a + b);
+    return total * (1 - discount);
+}
+
+console.log(sum(0.1, 20, 30));
+
+**DEFAULT PARAMETERS**
+
+function interest(principal, rate, years) {
+    rate = rate || 3.5;
+    years = years || 5;
+
+    return principal * rate / 100 * years;
+}
+
+console.log(interest(10000, 5))
+
+**GETTERS AND SETTERS**
+
+/*
+O que são Getters e Setters?
+Getter (get) → Permite acessar um valor como se fosse uma propriedade.
+Setter (set) → Permite modificar um valor como se fosse uma propriedade, mas com lógica personalizada.
+*/
+
+const person = {
+    firstName: 'Leonardo',
+    lastName: 'P Krause',
+    get fullName() {
+        return `${person.firstName} ${person.lastName}`
+    }, 
+    set fullName(value) {
+        const parts = value.split(' ');
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+
+person.fullName = 'Elisa Rosa';
+
+console.log(person);
+
+**TRY AND CATCH**
+
+/*
+O que são Getters e Setters?
+Getter (get) → Permite acessar um valor como se fosse uma propriedade.
+Setter (set) → Permite modificar um valor como se fosse uma propriedade, mas com lógica personalizada.
+*/
+
+const person = {
+    firstName: 'Leonardo',
+    lastName: 'P Krause',
+    get fullName() {
+        return `${person.firstName} ${person.lastName}`
+    }, 
+    set fullName(value) { 
+        if (typeof value !== 'string')
+            throw new Error('Value is not a string'); //  THROW relata um erro que se acontecer cai no catch
+
+        const parts = value.split(' ');
+        if (parts.length !== 2)
+            throw new Error('Enter a first and last name') //  THROW relata um erro que se acontecer cai no catch
+
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+};
+
+try {
+    person.fullName = 'Leo Krause';
+}
+catch (e) {
+    alert(e);
+}
+
+console.log(person);
+
+**LOCAL VS. GLOBAL SCOPE**
+const color = 'red';
+
+function start() {
+    const message = 'hi';
+    const color = 'blue';
+    console.log(color);
+}
+
+function stop() {
+    const messsage = 'bye'
+}
+
+start();
+
+**LET VS VAR**
+
+APENAS NÃO USE VAR KKKKK
+
+**THE THIS KEYWORD**
+
+// Se uma função faz parte de um objeto, chamamos ela de metodo
+ 
+const video = {
+    title: 'a',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(function(tag) {
+            console.log(this.title, tag);
+        }, this);
+    }
+};
+
+video.showTags();
+
+**CHANGING THIS**
+
+// method -> obj
+// function -> global (window, global)
+
+const video = {
+    title: 'a',
+    tags: ['a', 'b', 'c'],
+    showTags() {
+        this.tags.forEach(tag => {
+            console.log(this.title, tag);
+        });
+    }
+};
+
+video.showTags();
+
+**EXERCISE 1 - SUM OF ARGUMENTS**
+
+console.log(sum(1, 2, 3, 4));
+
+function sum(...items) {
+    if (items.length === 1 && Array.isArray(items[0]))
+        items = [...items[0]];
+
+    return items.reduce((a, b) => a + b);
+}
+
+**EXERCISE 2 - AREA OF CIRCLE**
+
